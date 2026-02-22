@@ -40,7 +40,7 @@ print("\nFirst 5 rows of the dataset:")
 print(df.head())
 
 X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=0.2, random_state=42, stratify=y)
+X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=0.2, random_state=42, stratify=y_train_val)
 
 print(f"\nTraining set size: {len(X_train)} samples")
 print(f"Validation set size: {len(X_val)} samples")

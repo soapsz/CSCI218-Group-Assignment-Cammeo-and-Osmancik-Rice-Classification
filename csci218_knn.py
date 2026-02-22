@@ -63,7 +63,7 @@ X_train_full, X_test, y_train_full, y_test = train_test_split(
 """
 
 X_train, X_val, y_train, y_val = train_test_split(
-    X_train_full, y_train_full, test_size=0.2, random_state=42, stratify=y
+    X_train_full, y_train_full, test_size=0.2, random_state=42, stratify=y_train_full
 )
 
 """Feature Scaling

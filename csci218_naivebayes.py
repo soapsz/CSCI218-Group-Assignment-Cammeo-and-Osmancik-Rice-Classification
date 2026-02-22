@@ -21,10 +21,6 @@ try:
 except FileNotFoundError:
     print("Error: 'Rice_Cammeo_Osmancik.arff' file not found.")
     exit()
-    
-# decoding (arff file type oftenly holds data in bytes)
-for col in df.select_dtypes([object]):
-    df[col] = df[col].str.decode('utf-8')
 
 df.head(10)
 
@@ -221,9 +217,10 @@ unique_smote, counts_smote = np.unique(y_train_smote, return_counts=True)
 print(dict(zip(unique_smote, counts_smote)))
 
 algo_smote = SelectKBest(score_func=f_classif, k=5)
-algo_smote.fit(X_train_smote, y_train_smote)
-
-y_pred_smote = algo_smote.predict(X_test)
+X_train_smote_selected = algo_smote.fit_transform(X_train_smote, y_train_smote)
+X_test_selected = algo_smote.transform(X_test)
+nb_model.fit(X_train_smote_selected, y_train_smote)
+y_pred_smote = nb_model.predict(X_test_selected)
 acc_smote = accuracy_score(y_test, y_pred_smote)
 
 print("\nSMOTE inclusion")
