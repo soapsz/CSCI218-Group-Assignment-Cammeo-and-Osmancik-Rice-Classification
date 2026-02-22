@@ -40,7 +40,7 @@ df.head()
 
 """### Split dataset into training (60%), validation (20%) and testing (20%)"""
 
-X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=0.2, random_state=42)
 
 print(f"Training set size: {len(X_train)} samples")
